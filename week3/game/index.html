@@ -21,7 +21,7 @@
 <h1>MakeUseOf Image Classifier</h1>
 
 <h2>Click "Choose File" to Add an Image</h2>
-
+<button id="startButton">Start the game</button>
 <!-- Container for image classification result -->
 <div class="imageResult" id="imageResult"></div>
 
@@ -35,8 +35,21 @@
 
 <script>
     let synth = window.speechSynthesis
+
+    //let the game start with speaking windows
+    window.addEventListener("load", (event) => {
+        console.log("page is fully loaded");
+        gameStart()
+    });
+
     // Create a variable containing the result container
     const element = document.getElementById("imageResult");
+
+    //get button to start game
+    const startGame = document.getElementById('startButton');
+        startGame.addEventListener('click', () => {
+            speak('Deze game is begonnen oeleh')
+        })
 
     function startImageScan() {
         // Create a variable to initialize the ml5.js image classifier with MobileNet
@@ -69,6 +82,10 @@
             let utterThis = new SpeechSynthesisUtterance(text)
             synth.speak(utterThis)
         }
+    }
+
+    function gameStart(){
+        speak('als je dit hoort bent je blij')
     }
 
 </script>
